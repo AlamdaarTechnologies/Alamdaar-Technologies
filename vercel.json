@@ -1,7 +1,33 @@
 {
   "headers": [
     {
+      "source": "/site.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "image/x-icon"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/favicon-16x16.png",
       "headers": [
         {
           "key": "Cache-Control",
@@ -10,7 +36,7 @@
       ]
     },
     {
-      "source": "/favicon-:size.png",
+      "source": "/favicon-32x32.png",
       "headers": [
         {
           "key": "Cache-Control",
@@ -28,7 +54,7 @@
       ]
     },
     {
-      "source": "/android-chrome-:size.png",
+      "source": "/android-chrome-192x192.png",
       "headers": [
         {
           "key": "Cache-Control",
@@ -37,12 +63,8 @@
       ]
     },
     {
-      "source": "/site.webmanifest",
+      "source": "/android-chrome-512x512.png",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/manifest+json"
-        },
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"

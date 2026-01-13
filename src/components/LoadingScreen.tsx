@@ -1,101 +1,104 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import "./LoadingScreen.css";
 
 interface LoadingScreenProps {
   onComplete: () => void;
 }
 
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
-  const [displayedText, setDisplayedText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-  const [isComplete, setIsComplete] = useState(false);
-
-  const text = "npm run dev - Alamdaar Technologies";
+  const [isExit, setIsExit] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
+  const fullText = "npm run dev - Alamdaar Technologies";
 
   useEffect(() => {
-    setDisplayedText(""); // Reset text
-    let charIndex = 0;
-
+    // Typing effect
     const typingInterval = setInterval(() => {
-      if (charIndex < text.length) {
-        const char = text[charIndex];
-        setDisplayedText((prev) => {
-          return prev + char;
-        });
-        charIndex++;
-      } else {
+      setVisibleCount((prev) => {
+        if (prev < fullText.length) {
+          return prev + 1;
+        }
         clearInterval(typingInterval);
-        // Wait a bit before completing
+
+        // Wait 0.5s after typing finishes, then exit
         setTimeout(() => {
-          setIsComplete(true);
-          setTimeout(() => {
-            onComplete();
-          }, 500);
-        }, 1500);
-      }
-    }, 80); // Typing speed
+          setIsExit(true);
+          setTimeout(onComplete, 800);
+        }, 500);
+
+        return prev;
+      });
+    }, 50); // Normal typing speed
 
     return () => {
       clearInterval(typingInterval);
     };
-  }, []);
-
-  // Blinking cursor effect
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 530);
-
-    return () => clearInterval(cursorInterval);
-  }, []);
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
-      {!isComplete && (
+      {!isExit && (
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950 flex items-center justify-center"
+          exit={{ opacity: 0, transition: { duration: 0.8 } }}
+          className="ls-container"
         >
-          {/* Laptop Container */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative w-full h-full flex items-center justify-center p-4"
+            transition={{ duration: 0.5, type: "spring" }}
+            className="ls-card"
           >
-            {/* Laptop Image - Responsive */}
-            <div className="relative w-full max-w-[90vw] max-h-[90vh] flex items-center justify-center">
-              <img
-                src="/laptop.png"
-                alt="Laptop"
-                className="w-full h-auto max-w-full max-h-[90vh] object-contain"
-                style={{ maxWidth: 'min(800px, 90vw)', maxHeight: '90vh' }}
-              />
-
-              {/* Terminal Text Overlay - Positioned within laptop screen area */}
-              {/* Left-aligned text typing from left to right */}
-              <div
-                className="absolute text-left px-4"
-                style={{
-                  top: '35%',
-                  left: '50%',
-                  width: '70%',
-                  maxWidth: '520px',
-                  transform: 'translate(-50%, -50%)',
-                }}
-              >
-                <div className="flex items-center justify-start gap-2 font-mono text-sm sm:text-base md:text-lg lg:text-xl text-white whitespace-nowrap">
-                  <span>{displayedText}</span>
-                  {displayedText.length < text.length && (
-                    <motion.span
-                      animate={{ opacity: showCursor ? 1 : 0 }}
-                      className="text-cyan-400"
+            <div className="ls-wrap">
+              <div className="ls-terminal">
+                <hgroup className="ls-head">
+                  <p className="ls-title">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
                     >
-                      ▊
-                    </motion.span>
-                  )}
+                      <path d="M7 15L10 12L7 9M13 15H17M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z"></path>
+                    </svg>
+                    Terminal
+                  </p>
+                  <button type="button" tabIndex={-1} className="ls-copy_toggle">
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+                      <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                    </svg>
+                  </button>
+                </hgroup>
+
+                <div className="ls-body">
+                  <pre className="ls-pre">
+                    <code>-&nbsp;</code>
+                    <code className="ls-cmd">
+                      {fullText.split("").map((char, index) => (
+                        <span
+                          key={index}
+                          style={{
+                            opacity: index < visibleCount ? 1 : 0,
+                          }}
+                        >
+                          {char}
+                        </span>
+                      ))}
+                    </code>
+                  </pre>
                 </div>
               </div>
             </div>

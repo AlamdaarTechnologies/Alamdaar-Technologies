@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #0f172a;
+  background-color: #080d16;
   /* Slate 950 fallback */
   width: 100%;
   position: fixed;
@@ -132,5 +132,38 @@
 
   50% {
     transform: translateY(-3px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ls-card {
+    max-width: 90vw;
+    padding: 0.5rem;
+  }
+
+  .ls-body {
+    padding: 0.75rem;
+  }
+
+  .ls-pre {
+    font-size: 12px;
+  }
+
+  .ls-title {
+    font-size: 14px;
+    height: 2rem;
+  }
+
+  .ls-head {
+    min-height: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+
+  /* Tighter fit for iPhone SE and small devices */
+  .ls-pre {
+    font-size: 11px;
   }
 }

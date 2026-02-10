@@ -12,6 +12,9 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const fullText = "npm run dev - Alamdaar Technologies";
 
   useEffect(() => {
+    let exitTimeout: ReturnType<typeof setTimeout>;
+    let completeTimeout: ReturnType<typeof setTimeout>;
+
     // Typing effect
     const typingInterval = setInterval(() => {
       setVisibleCount((prev) => {
@@ -21,9 +24,9 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
         clearInterval(typingInterval);
 
         // Wait 0.5s after typing finishes, then exit
-        setTimeout(() => {
+        exitTimeout = setTimeout(() => {
           setIsExit(true);
-          setTimeout(onComplete, 800);
+          completeTimeout = setTimeout(onComplete, 800);
         }, 500);
 
         return prev;
@@ -32,6 +35,8 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
     return () => {
       clearInterval(typingInterval);
+      clearTimeout(exitTimeout);
+      clearTimeout(completeTimeout);
     };
   }, [onComplete]);
 

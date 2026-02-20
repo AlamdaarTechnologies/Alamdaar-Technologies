@@ -80,7 +80,7 @@ export function Hero() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-xl text-gray-300 mb-10 leading-relaxed max-w-xl"
             >
-              Alamdaar Tech Services crafts exceptional digital experiences through cutting-edge 
+              Alamdaar Technologies crafts exceptional digital experiences through cutting-edge
               web development, strategic SEO, robust security, and intelligent management solutions.
             </motion.p>
 

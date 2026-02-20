@@ -48,14 +48,14 @@ export function Portfolio({ onNavigateToPortfolio }: { onNavigateToPortfolio: ()
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative overflow-hidden rounded-3xl bg-gray-100 aspect-[4/3]">
+              <div className="relative overflow-hidden rounded-3xl bg-slate-900 aspect-[4/3]">
                 {/* Image */}
                 <ImageWithFallback
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-contain transition-transform duration-700"
                 />
-                
+
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
 
@@ -72,7 +72,7 @@ export function Portfolio({ onNavigateToPortfolio }: { onNavigateToPortfolio: ()
                         </span>
                       ))}
                     </div>
-                    
+
                     <h3 className="text-2xl text-white mb-2">{project.title}</h3>
                     <p className="text-gray-200 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       {project.description}

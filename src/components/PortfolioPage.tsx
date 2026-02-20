@@ -14,7 +14,7 @@ export function PortfolioPage({ onNavigateBack }: { onNavigateBack: () => void }
 
   const filteredProjects = portfolioItems.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         project.description.toLowerCase().includes(searchQuery.toLowerCase());
+      project.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -86,11 +86,10 @@ export function PortfolioPage({ onNavigateBack }: { onNavigateBack: () => void }
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`px-6 py-3 rounded-xl whitespace-nowrap transition-all ${
-                        selectedCategory === category
+                      className={`px-6 py-3 rounded-xl whitespace-nowrap transition-all ${selectedCategory === category
                           ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg"
                           : "bg-white border-2 border-gray-200 text-gray-700 hover:border-violet-300"
-                      }`}
+                        }`}
                     >
                       {category}
                     </button>
@@ -122,14 +121,14 @@ export function PortfolioPage({ onNavigateBack }: { onNavigateBack: () => void }
                 >
                   <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-gray-200 hover:border-violet-300 transition-all shadow-lg hover:shadow-2xl">
                     {/* Image */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
                       <ImageWithFallback
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-contain transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      
+
                       {/* Preview button overlay */}
                       <a
                         href={project.previewUrl}

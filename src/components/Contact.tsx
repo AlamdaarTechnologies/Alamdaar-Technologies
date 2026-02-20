@@ -274,7 +274,7 @@ export function Contact() {
                       </div>
                       <div className="min-w-0 flex-1 pt-0.5">
                         <div className="text-sm text-violet-200 mb-1 font-medium">Visit Us</div>
-                        <div className="text-white text-sm md:text-base leading-relaxed">Dummy Address<br />Vadodara,Gujarat,India-390002</div>
+                        <div className="text-white text-sm md:text-base leading-relaxed">Vadodara<br />Gujarat, India-390002</div>
                       </div>
                     </div>
                   </div>

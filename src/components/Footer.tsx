@@ -143,7 +143,7 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-gray-400">
-              © {currentYear} Alamdaar Tech Services. All rights reserved.
+              © {currentYear} Alamdaar Technologies. All rights reserved.
             </div>
             <div className="flex gap-8 text-sm">
               <a href="#" className="text-gray-400 hover:text-violet-400 transition-colors">

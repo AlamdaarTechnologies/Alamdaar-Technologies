@@ -60,9 +60,9 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Portfolio Website — Mohammed Fatehpurwala",
     category: "Web Development",
     description: "A portfolio website for a Cloud and Cybersecurity professional, showcasing career milestones in an appealing style. Features optimised meta tags for enhanced SEO and Google search positioning.",
-    image: "/assets/portfolio/mohammed-fatehpurwala.png",
-    previewUrl: "https://mohammed-portfolio-olive.vercel.app/",
-    tags: ["HTML5", "CSS3", "Vanilla JS"],
+    image: "/assets/portfolio/Mohammed-Fatehpurwala.png",
+    previewUrl: "https://mohammed-fatehpurwala.vercel.app/",
+    tags: ["HTML5", "Tailwind CSS", "Vanilla JS"],
     client: "Mohammed Fatehpurwala",
     year: "Feb 2026",
     featured: true

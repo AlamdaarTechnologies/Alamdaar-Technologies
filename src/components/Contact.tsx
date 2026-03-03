@@ -24,10 +24,13 @@ export function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -54,9 +57,14 @@ export function Contact() {
         }
       }
     } catch (error) {
-      console.error("Form submission error:", error);
-      toast.error("Failed to send message. Please check your connection and try again.");
+      if (error instanceof DOMException && error.name === "AbortError") {
+        toast.error("Request timed out. Please try again.");
+      } else {
+        console.error("Form submission error:", error);
+        toast.error("Failed to send message. Please check your connection and try again.");
+      }
     } finally {
+      window.clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };

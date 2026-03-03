@@ -23,10 +23,13 @@ export function Footer() {
     }
 
     setIsSubscribing(true);
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
     try {
       const response = await fetch("https://formspree.io/f/xanrbwra", {
         method: "POST",
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -50,9 +53,14 @@ export function Footer() {
         }
       }
     } catch (error) {
-      console.error("Subscription error:", error);
-      toast.error("Failed to subscribe. Please try again.");
+      if (error instanceof DOMException && error.name === "AbortError") {
+        toast.error("Request timed out. Please try again.");
+      } else {
+        console.error("Subscription error:", error);
+        toast.error("Failed to subscribe. Please try again.");
+      }
     } finally {
+      window.clearTimeout(timeoutId);
       setIsSubscribing(false);
     }
   };

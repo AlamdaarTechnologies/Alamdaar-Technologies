@@ -177,7 +177,7 @@ export function Testimonials() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { number: "5/5", label: "Average Rating" },
-              { number: "5+", label: "Happy Clients" },
+              { number: "4+", label: "Happy Clients" },
               { number: "100%", label: "Satisfaction Rate" }
             ].map((stat, index) => (
               <div key={index} className="text-center">

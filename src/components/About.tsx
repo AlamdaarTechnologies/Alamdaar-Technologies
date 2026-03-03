@@ -27,7 +27,7 @@ const values = [
 
 const achievements = [
   { number: "3+", label: "Months of Excellence" },
-  { number: "5+", label: "Projects Delivered" },
+  { number: "4+", label: "Projects Delivered" },
   { number: "98%", label: "Client Satisfaction" },
   { number: "1-10", label: "Team Members" }
 ];

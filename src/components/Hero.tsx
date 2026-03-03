@@ -113,16 +113,16 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="grid grid-cols-3 gap-8"
+              className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-8"
             >
               {[
-                { number: "5+", label: "Projects Delivered" },
-                { number: "98%", label: "Client Retention" },
+                { number: "4+", label: "Projects Delivered" },
+                { number: "90%", label: "Client Retention" },
                 { number: "24/7", label: "Expert Support" }
               ].map((stat, index) => (
-                <div key={index} className="relative group">
+                <div key={index} className="relative group flex-1 min-w-[120px] max-w-[200px]">
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-indigo-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
-                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4">
+                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 flex flex-col items-center text-center">
                     <div className="text-3xl text-white mb-1">{stat.number}</div>
                     <div className="text-sm text-gray-400">{stat.label}</div>
                   </div>

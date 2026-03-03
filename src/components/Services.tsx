@@ -186,22 +186,22 @@ export function Services() {
           className="relative mt-20"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
-          <div className="relative bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 rounded-3xl p-12 lg:p-16 text-center overflow-hidden">
+          <div className="relative bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 rounded-3xl p-8 sm:p-12 lg:p-16 text-center overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
 
-            <div className="relative z-10">
-              <h3 className="text-4xl md:text-5xl text-white mb-6">
+            <div className="relative z-10 w-full max-w-full overflow-hidden">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl text-white mb-6 leading-tight flex-wrap">
                 Ready to Transform Your Business?
               </h3>
-              <p className="text-xl text-violet-100 mb-10 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-violet-100 mb-10 max-w-2xl mx-auto px-2">
                 Let's collaborate to build something extraordinary together
               </p>
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-white text-violet-600 hover:bg-gray-100 px-12 py-7 rounded-2xl text-lg shadow-2xl group"
+                className="bg-white text-violet-600 hover:bg-gray-100 px-6 sm:px-12 py-7 rounded-2xl text-base sm:text-lg shadow-2xl group max-w-full"
               >
                 Start Your Project Today
                 <ArrowUpRight className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

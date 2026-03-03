@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Code2, TrendingUp, Shield, Cpu, ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { Code2, TrendingUp, Shield, Cpu, ArrowUpRight, Check, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 
@@ -91,7 +91,7 @@ export function Services() {
           className="text-center mb-20"
         >
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-violet-100 rounded-full">
-            <Sparkles className="w-4 h-4 text-violet-600" />
+            <Award className="w-4 h-4 text-violet-600" />
             <span className="text-violet-600 text-sm">Our Expertise</span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-6">
@@ -111,7 +111,7 @@ export function Services() {
           {services.map((service, index) => {
             const Icon = service.icon;
             const isHovered = hoveredIndex === index;
-            
+
             return (
               <motion.div
                 key={service.title}
@@ -125,12 +125,12 @@ export function Services() {
               >
                 {/* Glow effect */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500 rounded-3xl`}></div>
-                
+
                 <div className="relative h-full bg-white border-2 border-gray-200 group-hover:border-transparent rounded-3xl p-8 lg:p-10 transition-all duration-500 overflow-hidden">
                   {/* Gradient border on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                   <div className="absolute inset-[2px] bg-white rounded-3xl"></div>
-                  
+
                   <div className="relative z-10">
                     {/* Icon */}
                     <div className="mb-6 relative">
@@ -190,7 +190,7 @@ export function Services() {
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-            
+
             <div className="relative z-10">
               <h3 className="text-4xl md:text-5xl text-white mb-6">
                 Ready to Transform Your Business?

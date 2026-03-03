@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Code2, Shield, TrendingUp, Cpu, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Code2, Shield, TrendingUp, Cpu, Sparkles, Zap, Rocket } from "lucide-react";
 import { Button } from "./ui/button";
 
 export function Hero() {
@@ -46,7 +46,7 @@ export function Hero() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-gradient-to-r from-violet-500/10 to-indigo-500/10 backdrop-blur-sm border border-violet-500/20 rounded-full"
             >
-              <Sparkles className="w-4 h-4 text-violet-400" />
+              <Rocket className="w-4 h-4 text-violet-400" />
               <span className="text-violet-300 text-sm">Next-Gen Digital Solutions</span>
             </motion.div>
 

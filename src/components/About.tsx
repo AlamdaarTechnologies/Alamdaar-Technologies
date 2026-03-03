@@ -52,7 +52,7 @@ export function About() {
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-purple-100 rounded-full">
               <div className="w-2 h-2 bg-purple-600 rounded-full animate-pulse"></div>
-              <span className="text-purple-600 text-sm">About Alamdaar</span>
+              <span className="text-purple-600 text-sm">About Alamdaar Technologies</span>
             </div>
 
             <h2 className="text-5xl md:text-6xl text-gray-900 mb-8">
@@ -63,32 +63,16 @@ export function About() {
             </h2>
 
             <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-              Alamdaar Tech Services stands at the forefront of digital innovation, empowering 
+              Alamdaar Technologies stands at the forefront of digital innovation, empowering
               businesses to thrive in an ever-evolving technological landscape.
             </p>
 
             <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              With a passionate team of experts and a proven track record of successful 
-              transformations, we deliver solutions that don't just meet expectations — 
+              With a passionate team of experts and a proven track record of successful
+              transformations, we deliver solutions that don't just meet expectations —
               they redefine what's possible.
             </p>
 
-            {/* Quick stats */}
-            <div className="flex flex-wrap gap-6 mb-10">
-              {["Award-Winning Team", "ISO Certified", "24/7 Support"].map((badge, index) => (
-                <motion.div
-                  key={badge}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
-                  <span className="text-sm text-gray-700">{badge}</span>
-                </motion.div>
-              ))}
-            </div>
 
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -106,7 +90,7 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="hidden"
           >
             <div className="grid grid-cols-4 grid-rows-4 gap-4 h-[600px]">
               {/* Main large image */}
@@ -203,7 +187,7 @@ export function About() {
           <div className="relative bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 rounded-3xl p-12 lg:p-16 overflow-hidden">
             {/* Decorative grid */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-            
+
             <div className="relative z-10 grid md:grid-cols-4 gap-8">
               {achievements.map((achievement, index) => (
                 <motion.div

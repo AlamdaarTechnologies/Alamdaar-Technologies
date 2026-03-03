@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, ArrowUpRight, Sparkles } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, ArrowUpRight, Zap } from "lucide-react";
 import { motion } from "motion/react";
 
 export function Footer() {
@@ -40,12 +40,12 @@ export function Footer() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl blur-lg opacity-50"></div>
                   <div className="relative w-10 h-10 bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-white" />
+                    <Zap className="w-5 h-5 text-white" />
                   </div>
                 </div>
                 <span className="text-2xl">
                   <span className="bg-gradient-to-r from-violet-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                    Alamdaar
+                    Alamdaar Technologies
                   </span>
                 </span>
               </div>

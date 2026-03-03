@@ -21,7 +21,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: "/assets/portfolio/saheri-hardware-centre.png",
     previewUrl: "https://saherihardwarecentre.vercel.app/",
     tags: ["Static", "SEO", "JS (Vanilla)"],
-    client: "Aliakbar Saherwala (CEO)",
+    client: "Moiz Saherwala (Owner)",
     year: "Jan 2026",
     featured: true
   },
@@ -35,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
     image: "/assets/portfolio/mat-overseas.png",
     previewUrl: "https://mat-overseas.vercel.app/",
     tags: ["GSAP", "API (Forms)", "SEO"],
-    client: "Taher Sandalwala (Founder)",
+    client: "Aliakbar Saherwala (CEO)",
     year: "Feb 2026",
     featured: true
   },

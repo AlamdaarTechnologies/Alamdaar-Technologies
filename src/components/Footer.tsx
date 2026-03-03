@@ -1,8 +1,61 @@
-import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, ArrowUpRight, Zap } from "lucide-react";
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, ArrowUpRight, Zap, Loader2 } from "lucide-react";
 import { motion } from "motion/react";
+import { toast } from "sonner";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+
+  const handleSubscribe = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast.error("Please enter your email address.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setIsSubscribing(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xanrbwra", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: `New Newsletter Subscription - ${email}`,
+          message: `New subscription request from: ${email}`
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Successfully subscribed to our newsletter!");
+        setEmail("");
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          toast.error("There was an error subscribing. Please try again.");
+        } else {
+          toast.error("Something went wrong. Please try again later.");
+        }
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      toast.error("Failed to subscribe. Please try again.");
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -107,9 +160,9 @@ export function Footer() {
                 "Consulting"
               ].map((service) => (
                 <li key={service}>
-                  <a href="#" className="text-gray-400 hover:text-violet-400 transition-colors">
+                  <span className="text-gray-400 hover:text-violet-400 transition-colors cursor-default">
                     {service}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -121,52 +174,44 @@ export function Footer() {
             <p className="text-gray-400 text-sm mb-4">
               Subscribe for the latest tech insights and exclusive updates.
             </p>
-            <div className="flex flex-col gap-3">
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
               <input
                 type="email"
                 placeholder="Your email"
-                className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent text-white placeholder-gray-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent text-white placeholder-gray-500 w-full"
               />
               <motion.button
+                type="submit"
+                disabled={isSubscribing}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-4 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 rounded-xl transition-all flex items-center justify-center gap-2 text-white"
+                className="px-4 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 rounded-xl transition-all flex items-center justify-center gap-2 text-white disabled:opacity-50 disabled:cursor-not-allowed w-full"
               >
-                <Mail className="w-4 h-4" />
-                <span className="text-sm">Subscribe</span>
+                {isSubscribing ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span className="text-sm">Subscribing...</span>
+                  </>
+                ) : (
+                  <>
+                    <Mail className="w-4 h-4" />
+                    <span className="text-sm">Subscribe</span>
+                  </>
+                )}
               </motion.button>
-            </div>
+            </form>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-400">
-              © {currentYear} Alamdaar Technologies. All rights reserved.
-            </div>
-            <div className="flex gap-8 text-sm">
-              <a href="#" className="text-gray-400 hover:text-violet-400 transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-violet-400 transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-violet-400 transition-colors">
-                Cookie Policy
-              </a>
-            </div>
+          <div className="flex justify-center text-sm text-gray-400">
+            © {currentYear} Alamdaar Technologies. All rights reserved.
           </div>
         </div>
-
-        {/* Back to Top Button */}
-        <motion.button
-          onClick={scrollToTop}
-          whileHover={{ scale: 1.1, y: -2 }}
-          className="absolute bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg shadow-violet-500/50"
-        >
-          <ArrowUpRight className="w-5 h-5 text-white rotate-45" />
-        </motion.button>
       </div>
     </footer>
   );

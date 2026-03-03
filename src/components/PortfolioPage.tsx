@@ -36,7 +36,7 @@ export function PortfolioPage({ onNavigateBack }: { onNavigateBack: () => void }
 
             <div className="text-2xl">
               <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Alamdaar
+                Alamdaar Technologies
               </span>
             </div>
           </div>
@@ -87,8 +87,8 @@ export function PortfolioPage({ onNavigateBack }: { onNavigateBack: () => void }
                       key={category}
                       onClick={() => setSelectedCategory(category)}
                       className={`px-6 py-3 rounded-xl whitespace-nowrap transition-all ${selectedCategory === category
-                          ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg"
-                          : "bg-white border-2 border-gray-200 text-gray-700 hover:border-violet-300"
+                        ? "bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg"
+                        : "bg-white border-2 border-gray-200 text-gray-700 hover:border-violet-300"
                         }`}
                     >
                       {category}

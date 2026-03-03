@@ -100,6 +100,7 @@ export function Testimonials() {
               <div className="flex items-center justify-center gap-4 mt-8">
                 <button
                   onClick={prevTestimonial}
+                  aria-label="Previous testimonial"
                   className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all"
                 >
                   <ArrowLeft className="w-5 h-5 text-white" />
@@ -110,6 +111,8 @@ export function Testimonials() {
                     <button
                       key={index}
                       onClick={() => setCurrentIndex(index)}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                      aria-current={index === currentIndex ? "true" : undefined}
                       className={`h-2 rounded-full transition-all ${index === currentIndex
                         ? "w-8 bg-violet-400"
                         : "w-2 bg-white/30 hover:bg-white/50"
@@ -120,6 +123,7 @@ export function Testimonials() {
 
                 <button
                   onClick={nextTestimonial}
+                  aria-label="Next testimonial"
                   className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all"
                 >
                   <ArrowRight className="w-5 h-5 text-white" />
@@ -173,7 +177,7 @@ export function Testimonials() {
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { number: "5/5", label: "Average Rating" },
-              { number: "5+", label: "Happy Clients" },
+              { number: "4+", label: "Happy Clients" },
               { number: "100%", label: "Satisfaction Rate" }
             ].map((stat, index) => (
               <div key={index} className="text-center">

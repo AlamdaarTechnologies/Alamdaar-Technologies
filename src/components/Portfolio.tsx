@@ -60,36 +60,36 @@ export function Portfolio({ onNavigateToPortfolio }: { onNavigateToPortfolio: ()
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
 
                 {/* Content overlay */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end">
+                  <div className="transform translate-y-2 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-2 md:mb-4">
                       {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-white text-xs"
+                          className="px-2 md:px-3 py-0.5 md:py-1 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-white text-[10px] md:text-xs"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <h3 className="text-2xl text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-200 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 className="text-lg md:text-2xl text-white mb-1 md:mb-2">{project.title}</h3>
+                    <p className="hidden md:block text-gray-200 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       {project.description}
                     </p>
 
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-white text-sm">{project.client}</div>
-                        <div className="text-gray-300 text-xs">{project.year}</div>
+                        <div className="text-white text-xs md:text-sm">{project.client}</div>
+                        <div className="text-gray-300 text-[10px] md:text-xs">{project.year}</div>
                       </div>
                       <a
                         href={project.previewUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white hover:text-gray-900 border border-white/30 flex items-center justify-center text-white transition-all group-hover:scale-110"
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white hover:text-gray-900 border border-white/30 flex items-center justify-center text-white transition-all group-hover:scale-110 shrink-0"
                       >
-                        <ExternalLink className="w-5 h-5" />
+                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                       </a>
                     </div>
                   </div>

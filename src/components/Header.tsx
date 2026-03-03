@@ -45,8 +45,8 @@ export function Header() {
                 <Zap className="w-5 h-5 text-white" />
               </div>
             </div>
-            <span className={`text-2xl transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}>
-              <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className={`text-xl sm:text-2xl md:text-[1.65rem] font-bold transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}>
+              <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap tracking-tight">
                 Alamdaar Technologies
               </span>{" "}
             </span>
